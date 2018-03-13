@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -24,7 +25,7 @@ import static com.example.hoang.storylib.R.*;
  */
 
 public class StoryListView extends BaseAdapter {
-    List<StoryModel> storyModelList;
+    List<StoryModel> storyModelList = new ArrayList<>();
 
     public StoryListView(List<StoryModel> storyModelList) {
         this.storyModelList = storyModelList;
@@ -55,7 +56,7 @@ public class StoryListView extends BaseAdapter {
         ImageView ivBookMark = convertView.findViewById(id.iv_check);
         ImageView ivPic = convertView.findViewById(id.iv_pic);
         Picasso.get().load(storyModel.imageURL).fit().into(ivPic);
-        if (storyModel.bookmark == 1) ivBookMark.setColorFilter(Color.parseColor("#FFEB3B"));
+        if (storyModel.bookmark == 1) ivBookMark.setBackgroundResource(color.colorBookMark);
         Log.d(TAG, "getView: " + storyModel.imageURL);
 
         tvTitle.setText(storyModel.title);

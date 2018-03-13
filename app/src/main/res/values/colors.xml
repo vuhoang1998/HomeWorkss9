@@ -9,4 +9,5 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorBookMark">#FFEB3B</color>
+    <color name="colorWhite">#FFF</color>
 </resources>

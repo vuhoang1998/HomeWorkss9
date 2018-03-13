@@ -18,9 +18,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        storyModelList = DatabaseManager.getInstance(this).getStoryTopic();
+
 
         lvStory = findViewById(R.id.elv_story);
+
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        storyModelList = DatabaseManager.getInstance(this).getStoryTopic();
+
         storyListView = new StoryListView(storyModelList);
         lvStory.setAdapter(storyListView);
         lvStory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -32,8 +43,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
-    
 }

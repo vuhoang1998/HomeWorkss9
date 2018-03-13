@@ -3,6 +3,7 @@ package com.example.hoang.storylib;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.Guideline;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +46,6 @@ public class StoryActivity extends AppCompatActivity {
     @BindView(R.id.tv_startread)
     TextView tvStartread;
     StoryModel storyModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,16 +78,17 @@ public class StoryActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.iv_back:
                 onBackPressed();
-
                 break;
             case R.id.iv_bookmark:
-                ivBookmark.setColorFilter(Color.parseColor("#FFEB3B"));
+                if (storyModel.bookmark == 1) ivBookmark.setColorFilter(Color.parseColor("#FFFFFF"));
+                else ivBookmark.setColorFilter(Color.parseColor("#FFEB3B"));
                 DatabaseManager.getInstance(this).updateBookmark(storyModel);
-                Log.d(TAG, "onViewClicked: "+ storyModel.title+ storyModel.bookmark);
+                Log.d(TAG, "onViewClicked: "+ storyModel.title +" "+ storyModel.bookmark);
                 loadData();
                 break;
             case R.id.tv_startread:
                 break;
         }
     }
+
 }

@@ -55,9 +55,12 @@ public class DatabaseManager {
 
     public void updateBookmark(StoryModel storyModel){
         sqLiteDatabase = myDatabase.getWritableDatabase();
-        
+
+        int bookmark;
+        if (storyModel.bookmark ==1 ) bookmark =0;
+        else bookmark =1;
         ContentValues contentValues = new ContentValues();
-        contentValues.put("bookmark",1);
+        contentValues.put("bookmark",bookmark);
         sqLiteDatabase.update(TABLE_STORY,contentValues,
                 "id = "+ storyModel.id,null);
 
